@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css'
+        integrity='sha512-XWTTruHZEYJsxV3W/lSXG1n3Q39YIWOstqvmFsdNEEQfHoZ6vm6E9GK2OrF6DSJSpIbRbi+Nn0WDPID9O7xB2Q=='
+        crossorigin='anonymous' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theame File Exchange data Dark Mode To Light Mode </title>
+    <style>
+        :root.light {
+            --bg: white;
+            --color: black;
+        }
+
+        :root.dark {
+            --bg: black;
+            --color: white;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--color);
+        }
+
+        .card {
+            background-color: var(--bg);
+            color: var(--color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="form-switch text-center my-5">
+            <input type="checkbox" id="mode" class="form-check-input">
+            <label for="mode" class="form-check-label"></label>
+        </div>
+        <h1>Hello</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia libero temporibus odit neque, impedit,
+            deserunt nesciunt ea sit autem iure enim! Minima temporibus ab nihil? Labore vero veniam accusantium
+            nesciunt ut voluptatum debitis eveniet, nam quos iure, laboriosam explicabo architecto sit corporis! Esse
+            dignissimos suscipit nisi ipsam minima facere laboriosam!
+        </p>
+    </div>
+
+    <script>
+        const modeBtn = document.getElementById('mode');
+        modeBtn.onchange = (e) => {
+            if (modeBtn.checked === true) {
+                document.documentElement.classList.remove("dark")
+                document.documentElement.classList.add("light")
+                window.localStorage.setItem('mode', 'light');
+            } 
+            else {
+                document.documentElement.classList.remove("light")
+                document.documentElement.classList.add("dark")
+                window.localStorage.setItem('mode', 'dark');
+            }
+        }
+
+        const mode = window.localStorage.getItem('mode');
+        if (mode == 'light') 
+        {
+            modeBtn.checked = true;
+            document.documentElement.classList.remove("dark")
+            document.documentElement.classList.add("light")
+        }
+
+        if (mode == 'dark')
+         {
+            modeBtn.checked = false;
+            document.documentElement.classList.remove("light")
+            document.documentElement.classList.add("dark")
+        }
+    </script>
+</body>
+
+</html>
